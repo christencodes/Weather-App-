@@ -18,26 +18,22 @@ export default function WeatherMain() {
         </div>
       </div>
       {/* Weather Squares */}
-      <div className="flex flex-col items-center md:flex-row md:justify-between ">
-        <div className="w-full h-fit flex gap-4">
-          <div className="max-w-45 w-full  min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral600">
-            <h3 className="text-preset-6 text-white">Feels Like</h3>
-            <p className="text-preset-3 text-white">64</p>
-          </div>
-          <div className="max-w-45 w-full  min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral600">
-            <h3 className="text-preset-6 text-white">Humidity</h3>
-            <p className="text-preset-3 text-white">46%</p>
-          </div>
+      <div className="grid grid-cols-2 gap-4 items-center md:flex md:flex-row md:justify-between md:gap-5 lg:gap-6  ">
+        <div className="w-full  min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral600">
+          <h3 className="text-preset-6 text-white">Feels Like</h3>
+          <p className="text-preset-3 text-white">64</p>
         </div>
-        <div className="w-full h-fit flex gap-4">
-          <div className="max-w-45 w-full  min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral600">
-            <h3 className="text-preset-6 text-white">Wind</h3>
-            <p className="text-preset-3 text-white">9 mph</p>
-          </div>
-          <div className="max-w-45 w-full  min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral600">
-            <h3 className="text-preset-6 text-white">Precipitation</h3>
-            <p className="text-preset-3 text-white">0 in</p>
-          </div>
+        <div className=" w-full min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral600">
+          <h3 className="text-preset-6 text-white">Humidity</h3>
+          <p className="text-preset-3 text-white">46%</p>
+        </div>
+        <div className="w-full  min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral600">
+          <h3 className="text-preset-6 text-white">Wind</h3>
+          <p className="text-preset-3 text-white">9 mph</p>
+        </div>
+        <div className="w-full  min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral600">
+          <h3 className="text-preset-6 text-white">Precipitation</h3>
+          <p className="text-preset-3 text-white">0 in</p>
         </div>
       </div>
     </section>
