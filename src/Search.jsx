@@ -1,16 +1,20 @@
+import SearchIcon from "/src/images/icon-search.svg";
+
 export default function Search() {
   return (
     <div className="">
-      <form className="flex flex-col gap-3">
-        <div>
+      <form className="flex flex-col gap-3 ">
+        <div className="w-full h-14 rounded-xl text-preset-5-medium text-neutral200 bg-neutral800 px-4 flex gap-4 items-center justify-start">
+          <img src={SearchIcon} alt="" />
           <input
-            className="w-full h-14 rounded-xl text-preset-5-medium text-neutral200 bg-neutral800"
+            className="h-full outline-0"
             type="text"
+            placeholder="Search for a place..."
           />
         </div>
 
         <input
-          className="w-full h-14 rounded-xl text-preset-5-medium bg-blue500 text-white"
+          className="w-full h-14 rounded-xl text-preset-5-medium bg-blue500 text-white "
           type="button"
           value="Search"
         />
