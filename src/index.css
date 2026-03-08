@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+@import "tailwindcss";
+
+html,
+body,
+#root {
+  @apply h-full bg-neutral900;
+}
+
+@theme {
+  --color-neutral900: #02012c;
+  --color-neutral800: #262540;
+  --color-neutral700: #302f4a;
+  --color-neutral600: #3c3b5e;
+  --color-neutral300: #acacb7;
+  --color-neutral200: #d4d3d9;
+
+  --color-orange500: #ff820a;
+
+  --color-blue500: #4658d9;
+  --color-blue700: #2b1b9c;
+
+  --font-dmSans: "DM Sans", sans-serif;
+  --font-bg: "Bricolage Grotesque", sans-serif;
+}
+
+.text-preset-1 {
+  @apply text-8xl leading-[100%] -tracking-[2px] italic font-semibold font-dmSans;
+}
+
+.text-preset-2 {
+  @apply text-[52px] leading-[120%] tracking-normal  font-bold font-bg;
+}
+
+.text-preset-3 {
+  @apply text-[32px] leading-[100%] tracking-normal  font-light font-dmSans;
+}
+
+.text-preset-4 {
+  @apply text-[28px] leading-[120%] tracking-normal  font-bold font-dmSans;
+}
+
+.text-preset-5 {
+  @apply text-[20px] leading-[120%] tracking-normal  font-semibold font-dmSans;
+}
+
+.text-preset-5-medium {
+  @apply text-[20px] leading-[120%] tracking-normal  font-medium font-dmSans;
+}
+
+.text-preset-6 {
+  @apply text-[18px] leading-[120%] tracking-normal  font-medium font-dmSans;
+}
+
+.text-preset-7 {
+  @apply text-[16px] leading-[120%] tracking-normal  font-medium font-dmSans;
+}
+
+.text-preset-8 {
+  @apply text-[14px] leading-[120%] tracking-normal  font-medium font-dmSans;
+}
