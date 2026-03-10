@@ -1,5 +1,5 @@
-import smallBG from "/src/images/bg-today-small.svg";
-import bigBG from "/src/images/bg-today-large.svg";
+// import smallBG from "/src/images/bg-today-small.svg";
+// import bigBG from "/src/images/bg-today-large.svg";
 
 export default function WeatherMain() {
   return (
@@ -19,19 +19,19 @@ export default function WeatherMain() {
       </div>
       {/* Weather Squares */}
       <div className="grid grid-cols-2 gap-4 items-center md:flex md:flex-row md:justify-between md:gap-5 lg:gap-6  ">
-        <div className="w-full  min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral600">
+        <div className="w-full  min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral800 border-neutral600 border">
           <h3 className="text-preset-6 text-white">Feels Like</h3>
           <p className="text-preset-3 text-white">64</p>
         </div>
-        <div className=" w-full min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral600">
+        <div className=" w-full min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral800 border-neutral600 border">
           <h3 className="text-preset-6 text-white">Humidity</h3>
           <p className="text-preset-3 text-white">46%</p>
         </div>
-        <div className="w-full  min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral600">
+        <div className="w-full  min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral800 border-neutral600 border">
           <h3 className="text-preset-6 text-white">Wind</h3>
           <p className="text-preset-3 text-white">9 mph</p>
         </div>
-        <div className="w-full  min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral600">
+        <div className="w-full  min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral800 border-neutral600 border">
           <h3 className="text-preset-6 text-white">Precipitation</h3>
           <p className="text-preset-3 text-white">0 in</p>
         </div>
