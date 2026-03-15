@@ -10,7 +10,7 @@ export default function WeatherHourly({ time, temp }) {
       </div>
       <div>
         {/* Temp */}
-        <p className="text-preset-7 text-white">{temp}</p>
+        <p className="text-preset-7 text-white">{temp.toFixed(0)}°</p>
       </div>
     </div>
   );

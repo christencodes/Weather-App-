@@ -1,5 +1,5 @@
-// import smallBG from "/src/images/bg-today-small.svg";
-// import bigBG from "/src/images/bg-today-large.svg";
+import smallBG from "/src/images/bg-today-small.svg";
+import bigBG from "/src/images/bg-today-large.svg";
 
 //! THIS IS WHERE WE LEFT OFF - WE ARE UPDATING THESE PROPS!
 export default function WeatherMain({
@@ -18,16 +18,21 @@ export default function WeatherMain({
   return (
     <section className="flex flex-col gap-5 ">
       {/* Weather Main */}
-      <div className="w-full h-71.5 bg-slate-500 overflow-hidden rounded-[20px] px-6 py-10 flex  items-center justify-between  ">
-        <div className="locationDate text-center border-4 border-white">
+      <div
+        className={`w-full h-71.5 bg-slate-500 overflow-hidden rounded-[20px] px-6 py-10 flex flex-col items-center justify-around bg-[url(src/images/bg-today-small.svg)] md:bg-[url(src/images/bg-today-large.svg)]
+        lg:bg-[url(src/images/bg-today-large.svg)] bg-no-repeat bg-cover bg-center  border border-red-500`}
+      >
+        <div className="locationDate text-center border border-green-600 ">
           <h3 className="location text-preset-4 text-white">{`${name}, ${country}`}</h3>
           <p className="date text-preset-6 text-white/60">
             {`${day}, ${month} ${date}, ${year}`}
           </p>
         </div>
-        <div className="tempInfo border-4 border-white">
+        <div className="tempInfo border border-orange-600  ">
           <img src="" alt="" />
-          <p className="temp text-preset-1 text-white">{temperature}</p>
+          <p className="temp text-preset-1 text-white">
+            {`${temperature.toFixed(0)}°`}
+          </p>
         </div>
       </div>
       {/* Weather Squares */}

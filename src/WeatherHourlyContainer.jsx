@@ -9,33 +9,33 @@ export default function WeatherHourlyContainer({
   weatherData,
   weekDays,
 }) {
+  const [dropDownDay, setDropDownDay] = useState("Monday");
   const [visibility, setVisibility] = useState(false);
   const [currentHours, setCurrentHours] = useState(null);
   const nums = [15, 16, 17, 18, 19, 20, 21, 22];
 
   function setHours(day) {
+    const currentDay = weekDays[new Date(day).getDay()];
     const hourData = nums
       .map((time) => {
-        console.log(`${day}T${time}:00`);
         return weatherData.hourly.time.indexOf(`${day}T${time}:00`);
       })
       .map((index) => {
         return weatherData.hourly.temperature_2m[index];
       })
       .map((temp, index) => {
-        console.log(nums[index] - 2);
         return { time: nums[index] - 12, temp: temp };
       });
 
-    console.log(hourData);
+    setDropDownDay(currentDay);
     setCurrentHours(hourData);
   }
   function setVis() {
     setVisibility(!visibility);
   }
 
-  const hourly = hourlyData ? hourlyData.temperature_2m : undefined;
-  console.log(hourly);
+  // const hourly = hourlyData ? hourlyData.temperature_2m : undefined;
+
   return (
     <div className="relative w-full flex flex-col gap-4 bg-neutral800 h-fit px-4 py-5 rounded-[20px] ">
       <WeatherHourlyDropdown visibility={visibility}>
@@ -58,7 +58,7 @@ export default function WeatherHourlyContainer({
           onClick={() => setVisibility(!visibility)}
           className="bg-neutral600 px-4 py-2 text-preset-7 rounded-lg text-white flex items-center justify-between gap-3 cursor-pointer"
         >
-          <h3>Tuesday</h3>
+          <h3>{dropDownDay}</h3>
           <img src={DownArrow} alt="" />
         </button>
       </section>

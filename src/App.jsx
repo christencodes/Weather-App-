@@ -77,8 +77,10 @@ function App() {
 
   //?-----------------------FUNCTIONS
 
+  // ! here
   function setLocation(locationInfo) {
     setCurrentLocation(locationInfo);
+    console.log(locationInfo);
 
     setParam({
       latitude: locationInfo.latitude,
@@ -126,7 +128,6 @@ function App() {
       const res = await fetch(url);
       const data = await res.json();
       console.log(data);
-
       setWeatherdata(data);
     }
 
@@ -162,10 +163,6 @@ function App() {
     const dailyObjects = dayOrder.map((day, index) => {
       const weatherCode = weatherData.daily.weather_code[index];
 
-      console.log(
-        resources.find((weather) => weather.codes.includes(weatherCode)),
-      );
-
       const iconContainer = resources.find((weather) =>
         weather.codes.includes(weatherCode),
       );
@@ -183,7 +180,6 @@ function App() {
 
   //Populate Daily goes here
   useEffect(() => {
-    console.log(dayOrder);
     populateDailyInfo();
   }, [dayOrder]);
 
@@ -222,7 +218,7 @@ function App() {
             name={currentLocation.name}
             country={currentLocation.country}
             month={months[currentDate.getMonth()]}
-            day={weekDays[currentDate.getDay()]}
+            day={weekDays[currentDate.getDay() - 1]}
             date={currentDate.getDate()}
             year={currentDate.getFullYear()}
           ></WeatherMain>

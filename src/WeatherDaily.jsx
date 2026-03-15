@@ -8,8 +8,8 @@ export default function WeatherDaily({ day, icon, min = 0, max = 0 }) {
         <img src={icon} alt="" />
       </div>
       <div className="HighLow w-full text-preset-7 text-white items-center justify-around flex gap-2 ">
-        <div className="High">{max.toFixed(0)}</div>
-        <div className="Low">{min.toFixed(0)}</div>
+        <div className="High">{max.toFixed(0)}°</div>
+        <div className="Low">{min.toFixed(0)}°</div>
       </div>
     </div>
   );
