@@ -1,5 +1,4 @@
-import smallBG from "/src/images/bg-today-small.svg";
-import bigBG from "/src/images/bg-today-large.svg";
+import { resources } from "./resources";
 
 //! THIS IS WHERE WE LEFT OFF - WE ARE UPDATING THESE PROPS!
 export default function WeatherMain({
@@ -14,22 +13,24 @@ export default function WeatherMain({
   day,
   date,
   year,
+  icon,
 }) {
+  console.log(icon);
   return (
     <section className="flex flex-col gap-5 ">
       {/* Weather Main */}
       <div
-        className={`w-full h-71.5 bg-slate-500 overflow-hidden rounded-[20px] px-6 py-10 flex flex-col items-center justify-around bg-[url(src/images/bg-today-small.svg)] md:bg-[url(src/images/bg-today-large.svg)]
-        lg:bg-[url(src/images/bg-today-large.svg)] bg-no-repeat bg-cover bg-center  border border-red-500`}
+        className={`w-full h-71.5 bg-slate-500 overflow-hidden rounded-[20px] px-2 py-10 flex flex-col gap-4 items-center justify-around bg-[url(src/images/bg-today-small.svg)] md:bg-[url(src/images/bg-today-large.svg)]
+        lg:bg-[url(src/images/bg-today-large.svg)] bg-no-repeat bg-cover bg-center md:flex-row `}
       >
-        <div className="locationDate text-center border border-green-600 ">
+        <div className="locationDate text-center md:text-left  ">
           <h3 className="location text-preset-4 text-white">{`${name}, ${country}`}</h3>
           <p className="date text-preset-6 text-white/60">
             {`${day}, ${month} ${date}, ${year}`}
           </p>
         </div>
-        <div className="tempInfo border border-orange-600  ">
-          <img src="" alt="" />
+        <div className="tempInfo flex items-center gap-6 md:gap-0  ">
+          <img className=" h-30 w-30 " src={icon.icon} alt="" />
           <p className="temp text-preset-1 text-white">
             {`${temperature.toFixed(0)}°`}
           </p>

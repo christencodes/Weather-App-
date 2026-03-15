@@ -2,13 +2,11 @@ import DownArrow from "/src/images/icon-dropdown.svg";
 import WeatherHourly from "./WeatherHourly";
 import WeatherHourlyDropdown from "./WeatherHourlyDropdown";
 import WeatherHourlyDDitem from "./WeatherHourlyDDItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function WeatherHourlyContainer({
-  hourlyData,
-  weatherData,
-  weekDays,
-}) {
+export default function WeatherHourlyContainer({ weatherData, weekDays }) {
+  console.log("hourlyContainer");
+  console.log(weatherData);
   const [dropDownDay, setDropDownDay] = useState("Monday");
   const [visibility, setVisibility] = useState(false);
   const [currentHours, setCurrentHours] = useState(null);
@@ -21,10 +19,17 @@ export default function WeatherHourlyContainer({
         return weatherData.hourly.time.indexOf(`${day}T${time}:00`);
       })
       .map((index) => {
-        return weatherData.hourly.temperature_2m[index];
+        return {
+          temp: weatherData.hourly.temperature_2m[index],
+          weatherCode: weatherData.hourly.weather_code[index],
+        };
       })
-      .map((temp, index) => {
-        return { time: nums[index] - 12, temp: temp };
+      .map((info, index) => {
+        return {
+          time: nums[index] - 12,
+          temp: info.temp,
+          weatherCode: info.weatherCode,
+        };
       });
 
     setDropDownDay(currentDay);
@@ -33,6 +38,11 @@ export default function WeatherHourlyContainer({
   function setVis() {
     setVisibility(!visibility);
   }
+
+  useEffect(() => {
+    console.log("this");
+    console.log(currentHours);
+  }, [currentHours]);
 
   // const hourly = hourlyData ? hourlyData.temperature_2m : undefined;
 
@@ -63,7 +73,7 @@ export default function WeatherHourlyContainer({
         </button>
       </section>
       {currentHours ? (
-        currentHours.map((hour) => <WeatherHourly {...hour} />)
+        currentHours.map((hour, i) => <WeatherHourly {...hour} key={i} />)
       ) : (
         <>
           <WeatherHourly time={3} temp={0} />

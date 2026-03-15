@@ -3,7 +3,10 @@ import SearchIcon from "/src/images/icon-search.svg";
 export default function Search({ typing, children }) {
   return (
     <div className="relative">
-      <form className="flex flex-col justify-center items-center gap-4 md:flex-row">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="flex flex-col justify-center items-center gap-4 md:flex-row"
+      >
         <div className="h-14 rounded-xl text-preset-5-medium text-neutral200 bg-neutral800 px-4 flex gap-4 items-center w-full lg:max-w-131.5">
           <img src={SearchIcon} alt="" />
           <input

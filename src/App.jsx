@@ -17,6 +17,7 @@ import { resources } from "./resources";
 
 function App() {
   //?------------------------ STATES
+  const [currentDay, setCurrentDay] = useState(null);
   const [hourlyData, setHourlyData] = useState(null);
   const [currentDate] = useState(() => new Date());
 
@@ -174,7 +175,7 @@ function App() {
         max: weatherData.daily.temperature_2m_max[index],
       };
     });
-
+    setCurrentDay(dailyObjects[0]);
     setDailyObjects(dailyObjects);
   }
 
@@ -221,6 +222,7 @@ function App() {
             day={weekDays[currentDate.getDay() - 1]}
             date={currentDate.getDate()}
             year={currentDate.getFullYear()}
+            icon={currentDay ?? resources[0].icon}
           ></WeatherMain>
           <WeatherDailyContainer weather={weatherData} weekDays={weekDays}>
             {dailyObjects != null
