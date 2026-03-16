@@ -5,8 +5,6 @@ import WeatherHourlyDDitem from "./WeatherHourlyDDItem";
 import { useEffect, useState } from "react";
 
 export default function WeatherHourlyContainer({ weatherData, weekDays }) {
-  console.log("hourlyContainer");
-  console.log(weatherData);
   const [dropDownDay, setDropDownDay] = useState("Monday");
   const [visibility, setVisibility] = useState(false);
   const [currentHours, setCurrentHours] = useState(null);
@@ -39,10 +37,7 @@ export default function WeatherHourlyContainer({ weatherData, weekDays }) {
     setVisibility(!visibility);
   }
 
-  useEffect(() => {
-    console.log("this");
-    console.log(currentHours);
-  }, [currentHours]);
+  useEffect(() => {}, [currentHours]);
 
   // const hourly = hourlyData ? hourlyData.temperature_2m : undefined;
 

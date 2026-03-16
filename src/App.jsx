@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
+import UnitDropDown from "./UnitDropDown";
+import UnitDropDownItem from "./UnitDropDownItem";
 import Hero from "./Hero";
 import Search from "./Search";
 import WeatherMain from "./WeatherMain";
@@ -17,6 +19,29 @@ import { resources } from "./resources";
 
 function App() {
   //?------------------------ STATES
+  // * Unit States
+  //by default all of these are imperial
+  // false - Fahrenheit
+  //true - Celsius
+  const [tempType, setTempType] = useState(false);
+  function setTempUnit(x) {
+    setTempType(x);
+  }
+  //if the tempType changes, it needs to change across the entire application
+
+  //false - mph
+  //true -km/h
+  const [windType, setWindType] = useState(false);
+  function setWindUnit(x) {
+    setWindType(x);
+  }
+  //false - inches
+  //true - mm;
+  const [precipitationType, setPrecipitationType] = useState(false);
+  function setPrecipitationUnit(x) {
+    setPrecipitationType(x);
+  }
+  //* ----------------------------------------------
   const [currentDay, setCurrentDay] = useState(null);
   const [hourlyData, setHourlyData] = useState(null);
   const [currentDate] = useState(() => new Date());
@@ -81,7 +106,6 @@ function App() {
   // ! here
   function setLocation(locationInfo) {
     setCurrentLocation(locationInfo);
-    console.log(locationInfo);
 
     setParam({
       latitude: locationInfo.latitude,
@@ -113,6 +137,12 @@ function App() {
       .then((data) => setSearchItems(data.results ?? []));
   }, [userInput]);
 
+  function onSearch(input) {
+    fetch(`${locationURL}?name=${input}&count=03&language=en&format=json`)
+      .then((res) => res.json())
+      .then((data) => setSearchItems(data.results ?? []));
+  }
+
   useEffect(() => {
     async function getLocation(param) {
       const url = new URL("https://api.open-meteo.com/v1/forecast");
@@ -124,16 +154,25 @@ function App() {
       url.searchParams.append("daily", param.daily);
       url.searchParams.append("hourly", param.hourly);
       url.searchParams.append("timezone", param.timezone);
-      url.searchParams.append("temperature_unit", param.temperature_unit);
+      url.searchParams.append(
+        "temperature_unit",
+        tempType ? "celsius" : "fahrenheit",
+      );
+      url.searchParams.append("wind_speed_unit", windType ? "kmh" : "mph");
+      url.searchParams.append(
+        "precipitation_unit",
+        precipitationType ? "mm" : "inch",
+      );
 
       const res = await fetch(url);
       const data = await res.json();
       console.log(data);
+
       setWeatherdata(data);
     }
 
     getLocation(param);
-  }, [param]);
+  }, [param, tempType, windType, precipitationType]);
 
   //! THIS IS WHERE I FORMATTED THE DAYS OF THE WEEK
   useEffect(() => {
@@ -187,9 +226,42 @@ function App() {
   //* --------------------
 
   //!APP
+
+  const [showUnitDD, setUnitDD] = useState(false);
+  function setUnitDDVis() {
+    setUnitDD(!showUnitDD);
+  }
   return (
     <div className="mx-auto max-w-274.25 w-full min-w-85.75 p-3.5 flex flex-col gap-8 ">
-      <Header></Header>
+      <Header
+        showDD={setUnitDDVis}
+        dropDown={
+          <UnitDropDown
+            show={showUnitDD}
+            temp={
+              <UnitDropDownItem
+                item1name={"Celsius (°C)"}
+                item2name={"Fahrenheit (°F)"}
+                onUnitChange={setTempUnit}
+              />
+            }
+            wind={
+              <UnitDropDownItem
+                item1name={"km/h"}
+                item2name={"mph"}
+                onUnitChange={setWindUnit}
+              />
+            }
+            precipitation={
+              <UnitDropDownItem
+                item1name={"Millimeters (mm)"}
+                item2name={"Inches (in)"}
+                onUnitChange={setPrecipitationUnit}
+              />
+            }
+          ></UnitDropDown>
+        }
+      ></Header>
       <Hero></Hero>
       <Search typing={typing}>
         {searchItems.length !== 0 ? (
@@ -215,7 +287,9 @@ function App() {
             apparent={weatherData.current.apparent_temperature}
             humidity={weatherData.current.relative_humidity_2m}
             wind={weatherData.current.wind_speed_10m}
+            windUnit={windType ? "km/h" : "mph"}
             precipitation={weatherData.current.precipitation}
+            pUnit={precipitationType ? "mm" : "in"}
             name={currentLocation.name}
             country={currentLocation.country}
             month={months[currentDate.getMonth()]}

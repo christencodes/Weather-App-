@@ -1,6 +1,3 @@
-import { resources } from "./resources";
-
-//! THIS IS WHERE WE LEFT OFF - WE ARE UPDATING THESE PROPS!
 export default function WeatherMain({
   name = "Dallas",
   country = "United States",
@@ -8,14 +5,15 @@ export default function WeatherMain({
   apparent = 0,
   humidity = 0,
   wind = 0,
+  windUnit,
   precipitation = 0,
+  pUnit,
   month,
   day,
   date,
   year,
   icon,
 }) {
-  console.log(icon);
   return (
     <section className="flex flex-col gap-5 ">
       {/* Weather Main */}
@@ -51,12 +49,17 @@ export default function WeatherMain({
           <div className="flex gap-3 text-white text-preset-5 font-normal!">
             <p className="text-preset-3 text-white">{wind}</p>
             {/* Remember to change this unit */}
-            <p className="self-end">mph</p>
+            <p className="self-end">{windUnit}</p>
           </div>
         </div>
         <div className="w-full  min-w-29.5 h-29.5  rounded-xl p-5 flex flex-col gap-6 bg-neutral800 border-neutral600 border">
           <h3 className="text-preset-6 text-white">Precipitation</h3>
-          <p className="text-preset-3 text-white">{precipitation}</p>
+          <div className="flex items-center gap-4">
+            <p className="text-preset-3 text-white">
+              {precipitation < 0 ? "0" : precipitation}
+            </p>
+            <p className="text-preset-3 text-white">{pUnit}</p>
+          </div>
         </div>
       </div>
     </section>
