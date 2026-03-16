@@ -137,12 +137,6 @@ function App() {
       .then((data) => setSearchItems(data.results ?? []));
   }, [userInput]);
 
-  function onSearch(input) {
-    fetch(`${locationURL}?name=${input}&count=03&language=en&format=json`)
-      .then((res) => res.json())
-      .then((data) => setSearchItems(data.results ?? []));
-  }
-
   useEffect(() => {
     async function getLocation(param) {
       const url = new URL("https://api.open-meteo.com/v1/forecast");

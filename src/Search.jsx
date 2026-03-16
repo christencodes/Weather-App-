@@ -1,8 +1,6 @@
-import { useState } from "react";
 import SearchIcon from "/images/icon-search.svg";
 
 export default function Search({ typing, children }) {
-  const [setSearchInput] = useState("");
   return (
     <div className="relative">
       <form
@@ -13,7 +11,6 @@ export default function Search({ typing, children }) {
           <img src={SearchIcon} alt="" />
           <input
             onChange={(e) => {
-              setSearchInput(e.target.value);
               e.target.value.length > 0 ? typing(e.target.value) : "";
             }}
             className="h-full outline-0 "
