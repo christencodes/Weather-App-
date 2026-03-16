@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchIcon from "/src/images/icon-search.svg";
+import SearchIcon from "/images/icon-search.svg";
 
 export default function Search({ typing, children }) {
   const [setSearchInput] = useState("");

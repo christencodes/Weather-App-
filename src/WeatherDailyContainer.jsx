@@ -1,5 +1,3 @@
-import WeatherDaily from "./WeatherDaily";
-
 export default function WeatherDailyContainer({ children }) {
   // May need to accept some of the json data
   //might need to make a weatherdaily smaller component

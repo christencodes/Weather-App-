@@ -1,5 +1,3 @@
-import Sunny from "/src/images/icon-sunny.webp";
-
 export default function WeatherDaily({ day, icon, min = 0, max = 0 }) {
   return (
     <div className="flex flex-col items-center justify-center px-2.5 py-4  bg-neutral800 rounded-xl border-neutral600 border max-h-fit h-full md:max-h[165px]">

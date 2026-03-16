@@ -1,4 +1,3 @@
-import StormIcon from "/src/images/icon-storm.webp";
 import { resources } from "./resources";
 
 export default function WeatherHourly({ time, temp, weatherCode = 1 }) {

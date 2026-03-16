@@ -1,6 +1,6 @@
-import logo from "/src/images/logo.svg";
-import gear from "/src/images/icon-units.svg";
-import downArrow from "/src/images/icon-dropdown.svg";
+import logo from "/images/logo.svg";
+import gear from "/images/icon-units.svg";
+import downArrow from "/images/icon-dropdown.svg";
 import UnitDropDown from "./UnitDropDown";
 
 export default function Header({ dropDown, showDD }) {

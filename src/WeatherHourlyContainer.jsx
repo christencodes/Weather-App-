@@ -1,4 +1,4 @@
-import DownArrow from "/src/images/icon-dropdown.svg";
+import DownArrow from "/images/icon-dropdown.svg";
 import WeatherHourly from "./WeatherHourly";
 import WeatherHourlyDropdown from "./WeatherHourlyDropdown";
 import WeatherHourlyDDitem from "./WeatherHourlyDDItem";

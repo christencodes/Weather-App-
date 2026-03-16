@@ -4,7 +4,7 @@
 //they pass info to the header -> to app?
 
 import { useEffect, useState } from "react";
-import checkMark from "/src/images/icon-checkmark.svg";
+import checkMark from "/images/icon-checkmark.svg";
 
 export default function UnitDropDownItem({
   item1name,
